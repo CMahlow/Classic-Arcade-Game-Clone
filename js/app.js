@@ -118,6 +118,11 @@ class Player {
 
 
 // Now instantiate your objects.
+let allEnemies = [];
+// Canvas position of created enemies and player x, y, movement
+let enemyPosition = [50, 135, 220];
+let player = new Player(200, 400, 50);
+
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
 
