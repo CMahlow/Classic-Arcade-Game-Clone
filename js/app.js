@@ -1,3 +1,8 @@
+let gameScore = 0,
+	lives = 3,
+	livesLeft = document.querySelector('.lives > span'),
+	score = document.querySelector('.score > span');
+
 // Enemies our player must avoid
 var Enemy = function() {
     // Variables applied to each of our instances go here,
