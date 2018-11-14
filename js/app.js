@@ -25,6 +25,14 @@ update(dt) {
     this.x += this.movement * dt
     livesLeft.innerText = lives;
 
+    // Begin over enemy on the left when user near the water
+		if (this.x > 505) {
+			this.x = -150;
+      // enemy movement acceleration
+			//New Feature (levels): *400-600 easy *700+ for hard
+			this.movement = 150 + Math.floor(Math.random() * 800);
+		}
+
 // Draw the enemy on the screen, required method for game
 Enemy.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
