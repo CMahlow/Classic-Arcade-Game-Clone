@@ -123,20 +123,21 @@ let allEnemies = [];
 let enemyPosition = [50, 135, 220];
 let player = new Player(200, 400, 50);
 
-// Place all enemy objects in an array called allEnemies
-// Place the player object in a variable called player
+//Array function
+enemyPosition.forEach((enemyPositionCoordinate) => {
+	let enemy = new Enemy(0, enemyPositionCoordinate, 100 + Math.floor(Math.random() * 500));
+	allEnemies.push(enemy);
+	// console.log(allEnemies);
+});
 
 
+document.addEventListener('keyup', function (e) {
+	var allowedKeys = {
+		37: 'left',
+		38: 'up',
+		39: 'right',
+		40: 'down'
+	};
 
-// This listens for key presses and sends the keys to your
-// Player.handleInput() method. You don't need to modify this.
-document.addEventListener('keyup', function(e) {
-    var allowedKeys = {
-        37: 'left',
-        38: 'up',
-        39: 'right',
-        40: 'down'
-    };
-
-    player.handleInput(allowedKeys[e.keyCode]);
+	player.handleInput(allowedKeys[e.keyCode]);
 });
