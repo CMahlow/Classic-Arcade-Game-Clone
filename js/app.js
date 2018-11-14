@@ -61,6 +61,61 @@ render() {
 // This class requires an update(), render() and
 // a handleInput() method.
 
+class Player {
+	constructor(x, y, movement) {
+		this.x = x;
+		this.y = y;
+		this.movement = movement;
+		this.sprite = 'images/char-boy.png';
+	}
+	update() {
+		// Stops Player from moving off the left/right side of canvas
+		if (this.y > 380) {
+			this.y = 380;
+		}
+		if (this.x > 400) {
+			this.x = 400;
+		}
+		if (this.x < 0) {
+			this.x = 0;
+		}
+		// Once player reaches the water, 100 points will be added to their game score
+		if (this.y < 0) {
+			this.x = 200;
+			this.y = 380;
+			gameScore++;
+			score.innerText = gameScore * 100;
+			if (gameScore === 10 && lives > 0) {
+				confirm('You won the game!');
+				lives = 3;
+				gameScore = 0;
+				livesLeft.innerText = lives;
+				score.innerText = '';
+			}
+		}
+	}
+	render() {
+		ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+	}
+	// Moves Player with keyboard arrow keys
+	handleInput(arrowKeyPressed) {
+		switch (arrowKeyPressed) {
+			case 'left':
+				this.x -= this.movement + 50;
+				break;
+			case 'up':
+				this.y -= this.movement + 30;
+				break;
+			case 'right':
+				this.x += this.movement + 50;
+				break;
+			case 'down':
+				this.y += this.movement + 30;
+				break;
+		}
+	}
+}
+
 
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
