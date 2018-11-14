@@ -17,6 +17,8 @@ class Enemy {
 
 // Update the enemy's position, required method for game
 // Parameter: dt, a time delta between ticks
+
+update(dt) {
 Enemy.prototype.update = function(dt) {
     // You should multiply any movement by the dt parameter
     // which will ensure the game runs at the same speed for
